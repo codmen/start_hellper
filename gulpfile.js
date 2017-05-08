@@ -15,7 +15,7 @@ var gulp = require('gulp'),
     notify = require("gulp-notify"),
     reload = browserSync.reload;
 
-var path = {
+var path = {  //Тут мы укажем куда складывать готовые после сборки файлы
     build: {
         html: 'build/',
         js: 'build/js/',
@@ -23,14 +23,14 @@ var path = {
         img: 'build/img/',
         fonts: 'build/fonts/'
     },
-    src: {
-        html: 'src/*.html',
-        js: 'src/js/main.js',
+    src: { //Пути откуда брать исходники
+        html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
+        js: 'src/js/main.js', //В стилях и скриптах нам понадобятся только main файлы
         style: 'src/style/main.less',
-        img: 'src/img/**/*.*',
+        img: 'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
         fonts: 'src/fonts/**/*.*'
     },
-    watch: {
+    watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
         html: 'src/**/*.html',
         js: 'src/js/**/*.js',
         style: 'src/style/**/*.less',
@@ -59,48 +59,48 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('html:build', function () {
-    gulp.src(path.src.html) 
-        .pipe(rigger())
-        .pipe(gulp.dest(path.build.html))
-        .pipe(reload({stream: true}))
+    gulp.src(path.src.html)  //Выберем файлы по нужному пути
+        .pipe(rigger())  //Прогоним через rigger
+        .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
+        .pipe(reload({stream: true})) //И перезагрузим наш сервер для обновлений
         .pipe(notify('HTML is build!'));
 });
 
 gulp.task('js:build', function () {
-    gulp.src(path.src.js) 
-        .pipe(rigger()) 
-        .pipe(sourcemaps.init()) 
-        .pipe(uglify()) 
-        .pipe(sourcemaps.write()) 
-        .pipe(gulp.dest(path.build.js))
-        .pipe(reload({stream: true}))
+    gulp.src(path.src.js)   //Найдем наш main файл
+        .pipe(rigger())  //Прогоним через rigger
+        .pipe(sourcemaps.init())  //Инициализируем sourcemap
+        .pipe(uglify())  //Сожмем наш js
+        .pipe(sourcemaps.write())   //Пропишем карты
+        .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
+        .pipe(reload({stream: true})) //И перезагрузим сервер
          .pipe(notify('JS is build!'));
 });
 
 gulp.task('style:build', function () {
-    gulp.src(path.src.style) 
-        .pipe(sourcemaps.init())
-        .pipe(less({
+    gulp.src(path.src.style) //Выберем наш main.less
+        .pipe(sourcemaps.init()) //То же самое что и с js
+        .pipe(less({ //Скомпилируем
             sourceMap: true,
             errLogToConsole: true
         }))
-        .pipe(prefixer())
-        .pipe(cssmin())
+        .pipe(prefixer())  //Добавим вендорные префиксы
+        .pipe(cssmin())  //Сожмем
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.build.css))
+        .pipe(gulp.dest(path.build.css)) //И в build
         .pipe(reload({stream: true}))
         .pipe(notify('CSS is build!'));
 });
 
 gulp.task('image:build', function () {
-    gulp.src(path.src.img) 
-        .pipe(imagemin({
+    gulp.src(path.src.img)  //Выберем наши картинки
+        .pipe(imagemin({  //Сожмем их
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()],
             interlaced: true
         }))
-        .pipe(gulp.dest(path.build.img))
+        .pipe(gulp.dest(path.build.img)) //И бросим в build
         .pipe(reload({stream: true}))
         .pipe(notify('IMG is compressed!'));
 });
