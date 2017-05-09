@@ -87,6 +87,7 @@ gulp.task('style:build', function () {
         .pipe(prefixer())  //Добавим вендорные префиксы
         .pipe(cssmin())  //Сожмем
         .pipe(sourcemaps.write())
+        //.pipe(sourcemaps.write('.')) generate main.css.map
         .pipe(gulp.dest(path.build.css)) //И в build
         .pipe(reload({stream: true}))
         .pipe(notify('CSS is build!'));

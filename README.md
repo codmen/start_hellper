@@ -33,7 +33,7 @@ Plug-ins:
 * **[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)** - automatically adds the vendor version prefix to CSS properties (a couple of years ago, I would have killed for such Tools).
 * **[gulp-minify](https://www.npmjs.com/package/gulp-minify)** - is needed for the compression of CSS .
 * **[browser-the syn]()** - with the help of this plugin we can easily deploy a local dev server with blackjack and livereload, as well as with its help we can make a tunnel to our localhost, that would be easy to show the layout to the customer .
-* **gulp-imagemin** - to compress images .
+* **gulp-image-min** - to compress images .
 * **imagemin-pngquant** - additions to the previous plug-in to work with PNG .
 * **gulp-uglify** - will compress our JS .
 * **gulp-less** - to compile our code, less.
