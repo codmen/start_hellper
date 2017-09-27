@@ -1,11 +1,11 @@
 {
-  "name": "frontend-devil",
+  "name": "frontent_hellper",
   "version": "1.0.0",
-  "homepage": "https://github.com/Insayt/frontend-devil",
+  "homepage": "https://github.com/codmen/start_hellper/",
   "authors": [
-    "Alex Insayt <insait.rostov@ya.ru>"
+    "Andrei Cojocari <webtheory@mail.ru>"
   ],
-  "description": "Devil boilerplate for html+js+css apps",
+  "description": "Hellper boilerplate for html+js+css apps",
   "moduleType": [
     "globals"
   ],

@@ -18,10 +18,10 @@ var gulp = require('gulp'),
 var path = {  //Тут мы укажем куда складывать готовые после сборки файлы
     build: {
         html: 'build/',
-        js: 'build/js/',
-        css: 'build/css/',
-        img: 'build/img/',
-        fonts: 'build/fonts/'
+        js: 'build/assets/js/',
+        css: 'build/assets/css/',
+        img: 'build/assets/img/',
+        fonts: 'build/assets/fonts/'
     },
     src: { //Пути откуда брать исходники
         html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
@@ -63,15 +63,15 @@ gulp.task('html:build', function () {
         .pipe(rigger())  //Прогоним через rigger
         .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
         .pipe(reload({stream: true})) //И перезагрузим наш сервер для обновлений
-        .pipe(notify('HTML is build!'));
+        //.pipe(notify('HTML is build!'));
 });
 
 gulp.task('js:build', function () {
     gulp.src(path.src.js)   //Найдем наш main файл
         .pipe(rigger())  //Прогоним через rigger
-        .pipe(sourcemaps.init())  //Инициализируем sourcemap
+        //.pipe(sourcemaps.init())  //Инициализируем sourcemap
         .pipe(uglify())  //Сожмем наш js
-        .pipe(sourcemaps.write())   //Пропишем карты
+        //.pipe(sourcemaps.write())   //Пропишем карты
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
         .pipe(reload({stream: true})) //И перезагрузим сервер
          .pipe(notify('JS is build!'));
@@ -79,7 +79,7 @@ gulp.task('js:build', function () {
 
 gulp.task('style:build', function () {
     gulp.src(path.src.style) //Выберем наш main.less
-        .pipe(sourcemaps.init()) //То же самое что и с js
+        //.pipe(sourcemaps.init()) //То же самое что и с js
         .pipe(less({ //Скомпилируем
             sourceMap: true,
             errLogToConsole: true
@@ -102,14 +102,12 @@ gulp.task('image:build', function () {
             interlaced: true
         }))
         .pipe(gulp.dest(path.build.img)) //И бросим в build
-        .pipe(reload({stream: true}))
-        .pipe(notify('IMG is compressed!'));
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.build.fonts))
-        .pipe(notify('FONTS is update'));
+        .pipe(gulp.dest(path.build.fonts));
 
 });
 

@@ -1,19 +1,17 @@
 {
-  "name": "start hellper",
-  "version": "1.0.1",
+  "name": "hellper",
+  "version": "1.0.0",
   "description": "Easy assembly of the frontend project use gulp.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gitbooster/start_hellper/"
-  },
-  "dependencies": {
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
     "browser-sync": "^2.2.3",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-minify-css": "^1.0.0",
     "gulp-rigger": "^0.5.8",
-    "gulp-less": "^3.9.1",
+    "gulp-less": "^3.3.2",
     "gulp-sourcemaps": "^1.5.0",
     "gulp-uglify": "^1.1.0",
     "gulp-watch": "^4.1.1",
@@ -21,4 +19,13 @@
     "rimraf": "^2.3.1",
     "gulp-notify": "^3.0.0"
   },
+  "scripts": {
+    "test": "default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codmen/start_hellper/"
+  },
+  "author": "Andrei Cojocari",
+  "license": "ISC"
 }
